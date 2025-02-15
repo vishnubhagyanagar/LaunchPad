@@ -120,6 +120,7 @@ export default function RegisterStartup() {
     }
   };
 
+  // will be making changes here for patent validation using google patent api
 const validatePatentId=async()=>{
   try{
   const res=await fetch(`http://localhost:8000/patent/${patentApplicationNumber}`,{
