@@ -1,0 +1,51 @@
+.card {
+  max-width: 800px; /* Maximum width of the card */
+  max-height: 600px; /* Maximum height of the card */
+  width: 100%; /* Full width of the parent */
+  margin: 20px auto; /* Center the card and add margin */
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures space is distributed evenly */
+  overflow: hidden; /* Hides overflow content */
+  perspective: 1000px;
+  box-shadow: 0 0 0 5px #ffffff80;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card img {
+  width: 100%; /* Fill the card width */
+  height: 150px; /* Fixed height for the image */
+  object-fit: cover; /* Ensures the image covers the space without distortion */
+  border-radius: 10px 10px 0 0; /* Rounds the top corners */
+}
+
+.card__content {
+  padding: 10px; /* Adjust padding as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute space between elements */
+  flex-grow: 1; /* Allows content to grow to fill the space */
+  overflow: hidden; /* Hide any overflow content */
+}
+
+.card__description {
+  overflow: hidden; /* Hide overflow of the description */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.project-header {
+  display: flex;
+  flex-direction: column; /* Stack image and title */
+  align-items: center; /* Center align the image and title */
+  width: 100%;
+}
+
+.project-title {
+  font-size: 1.5rem; /* Adjust title size */
+  font-weight: bold;
+  color: #333;
+  text-align: center; /* Center the title */
+}

@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+*{
+    /* @apply font-space-mono; */
+    
+}
+
+.button4 {
+  padding: 17px 40px;
+  border-radius: 100px;
+  cursor: pointer;
+  border: solid 0.5px rgb(86, 86, 86);
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all 0.5s ease;
+}
+
+.button4:hover {
+  /* letter-spacing: 3px; */
+  background-color: rgb(93, 24, 220);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+
+
+.button4:active {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
+
+
+.button1 {
+  font: inherit;
+  background-color: #000; 
+  border: 0;
+  color: #242424;
+  border-radius: 0.5em;
+  padding: 0.375em 1em;
+  font-weight: 600;
+  text-shadow: 0 0.0625em 0 #fff;
+  box-shadow: inset 0 0.0625em 0 0 #101010, 
+              0 0.0625em 0 0 #1a1a1a,
+              0 0.125em 0 0 #1c1c1c,
+              0 0.25em 0 0 #202020,
+              0 0.3125em 0 0 #222222,
+              0 0.375em 0 0 #242424,
+              0 0.425em 0 0 #282828,
+              0 0.425em 0.5em 0 #2a2a2a;
+  transition: 0.15s ease;
+  cursor: pointer;
+}
+
+.button1:active, .button1:hover,
+.button2:active, .button2:hover {
+  transform: translate(0, 0.225em);
+  box-shadow: inset 0 0.03em 0 0 #101010,
+              0 0.03em 0 0 #1a1a1a,
+              0 0.0625em 0 0 #1c1c1c,
+              0 0.125em 0 0 #202020,
+              0 0.125em 0 0 #222222,
+              0 0.2em 0 0 #242424,
+              0 0.225em 0 0 #282828,
+              0 0.225em 0.375em 0 #2a2a2a;
+  cursor: pointer;
+}
