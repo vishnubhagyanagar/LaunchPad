@@ -27,9 +27,11 @@ export default function RegisterStartup() {
   const [otp, setOtp] = useState<string>();
   const [otperror, setOtperror] = useState<string>();
   const [userotp, setUserotp] = useState<string>();
+  const [patentname, setPatentname] = useState<string>("");
+  
   const [otpverified, setOtpVerified] = useState<boolean>(false);
   const router=useRouter();
-  const [patentVerified,setPatentVerified]=useState<boolean>(true);// have changed the patent to true for testing
+  const [patentVerified,setPatentVerified]=useState<boolean>(false);// have changed the patent to true for testing then now to false
   const [errors, setErrors] = useState<{
     companyName?: string;
     fullName?: string;
@@ -121,19 +123,216 @@ export default function RegisterStartup() {
   };
 
   // will be making changes here for patent validation using google patent api
-const validatePatentId=async()=>{
-  try{
-  const res=await fetch(`http://localhost:8000/patent/${patentApplicationNumber}`,{
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
-  if(res.ok){
-    const data=await res.json();
-    setPatentVerified(true);
-  }}catch(e){
-    console.log(e);
+// const validatePatentId=async()=>{
+//   try{
+//   const res=await fetch(`http://localhost:8000/patent/${patentApplicationNumber}`,{
+//     method: "GET",
+//     headers: { "Content-Type": "application/json" },
+//   });
+//   if(res.ok){
+//     const data=await res.json();
+//     setPatentVerified(true);
+//   }}catch(e){
+//     console.log(e);
+//   }
+// }
+
+// error is that api key inst checked
+// const validatePatentId = async () => {
+//   if (!patentApplicationNumber) {
+//     console.log("Patent ID is required");
+//     return;
+//   }
+
+//   try {
+//     const res = await fetch(
+//       `https://serpapi.com/search.json?engine=google_patents_details&patent_id=${patentApplicationNumber}`,
+//       {
+//         method: "GET",
+//         headers: { "Accept": "application/json" },
+//       }
+//     );
+
+//     if (!res.ok) {
+//       console.log("API request failed with status:", res.status);
+//       setPatentVerified(false);
+//       return;
+//     }
+
+//     const data = await res.json();
+
+//     // Check if the response contains a valid patent
+//     if (data && data.publication_number) {
+//       console.log("Patent exists:", data.publication_number);
+//       setPatentVerified(true);
+//     } else {
+//       console.log("Patent does not exist");
+//       setPatentVerified(false);
+//     }
+//   } catch (error) {
+//     console.error("Error validating patent ID:", error);
+//     setPatentVerified(false);
+//   }
+// };
+
+
+// const validatePatentId = async () => {
+//   if (!patentApplicationNumber) {
+//     console.log("Patent ID is required");
+//     return;
+//   }
+
+//   try {
+//     console.log("Fetching data for Patent ID:", patentApplicationNumber);
+
+//     const API_KEY = "057370ebbddbf798e96051f0552c4d7aee61f04005e002aa41f083a5d263a8f3";  // 👈 Replace with your actual API key
+
+//     const res = await fetch(
+//       `https://serpapi.com/search.json?engine=google_patents_details&patent_id=${patentApplicationNumber}&api_key=${API_KEY}`,
+//       {
+//         method: "GET",
+//         headers: { "Accept": "application/json" },
+//       }
+//     );
+
+//     if (!res.ok) {
+//       console.log("API request failed with status:", res.status);
+//       setPatentVerified(false);
+//       return;
+//     }
+
+//     const data = await res.json();
+//     console.log("API Response:", data);
+
+//     if (data && data.publication_number) {
+//       console.log("✅ Patent exists:", data.publication_number);
+//       setPatentVerified(true);
+//     } else {
+//       console.log("❌ Patent does not exist");
+//       setPatentVerified(false);
+//     }
+//   } catch (error) {
+//     console.error("Error validating patent ID:", error);
+//     setPatentVerified(false);
+//   }
+// };
+
+
+// const validatePatentId = async () => {
+//   if (!patentApplicationNumber) {
+//     console.log("❌ Patent ID is required");
+//     return;
+//   }
+
+//   try {
+//     console.log("🔍 Fetching patent data for:", patentApplicationNumber);
+
+//     const res = await fetch(`http://localhost:8000/patent/${patentApplicationNumber}`);
+
+//     if (!res.ok) {
+//       console.log("❌ API request failed with status:", res.status);
+//       setPatentVerified(false);
+//       return;
+//     }
+
+//     const data = await res.json();
+//     console.log("✅ API Response:", data);
+
+//     if (data && data["title"]) {
+//       console.log("✅ Patent exists:", data);
+//       setPatentVerified(true);
+//     } else {
+//       console.log("❌ Patent does not exist");
+//       setPatentVerified(false);
+//     }
+//   } catch (error) {
+//     console.error("❌ Error validating patent ID:", error);
+//     setPatentVerified(false);
+//   }
+// };
+
+
+// const validatePatentId = async () => {
+//   if (!patentApplicationNumber) {
+//     console.log("❌ Patent ID is required");
+//     return;
+//   }
+
+//   try {
+//     console.log("🔍 Fetching patent data for:", patentApplicationNumber);
+
+//     const res = await fetch(`https://serpapi.com/search.json?engine=google_patents_details&patent_id=${patentApplicationNumber}&api_key=057370ebbddbf798e96051f0552c4d7aee61f04005e002aa41f083a5d263a8f3`);
+
+//     if (!res.ok) {
+//       console.log("❌ API request failed with status:", res.status);
+//       setPatentVerified(false);
+//       return;
+//     }
+
+//     const data = await res.json();
+//     console.log("✅ API Response:", data);
+
+//     if (data && data.publication_number) {
+//       console.log("✅ Patent exists:", data.publication_number);
+//       setPatentVerified(true);
+//     } else {
+//       console.log("❌ Patent does not exist");
+//       setPatentVerified(false);
+//     }
+//   } catch (error) {
+//     console.error("❌ Error validating patent ID:", error);
+//     setPatentVerified(false);
+//   }
+// };
+
+
+const validatePatentId = async () => {
+  if (!patentApplicationNumber ) {
+    setErrors((prev) => ({
+      ...prev,
+      patentApplicationNumber: "Patent Number is required",
+    }));
+    return false;
   }
-}
+
+  try {
+    // Send request to your backend proxy instead of SerpAPI directly
+    const response = await fetch(`http://localhost:8000/patent/${patentApplicationNumber}`);
+
+    if (!response.ok) {
+      // console.log("hierorr");
+      throw new Error(`Invalid Patent Number or API Error (Status: ${response.status})`);
+    }
+
+    const data = await response.json();
+    console.log("Patent Data:", data);
+
+    if (data.organic_results.title===patentname) {
+      setPatentVerified(true);
+      setErrors((prev) => ({ ...prev, patentApplicationNumber: undefined }));
+      return true; // ✅ Valid patent
+    } else {
+      setPatentVerified(false);
+      setErrors((prev) => ({
+        ...prev,
+        patentApplicationNumber: "Invalid Patent Number",
+      }));
+      return false; // ❌ Invalid patent
+    }
+  } catch (error) {
+    console.error("Error validating patent ID:", error);
+
+    setPatentVerified(false);
+    setErrors((prev) => ({
+      ...prev,
+      patentApplicationNumber: "Failed to verify patent",
+    }));
+    return false; // ❌ API error
+  }
+};
+
+
+
 
   const requestotp = () => {
     if (!email) {
@@ -442,6 +641,26 @@ const validatePatentId=async()=>{
                 {errors?.linkedInProfile && (
                   <Text>{errors.linkedInProfile}</Text>
                 )}
+              </div>
+
+              <div className="mb-4 col-span-2">
+                <label
+                  className="block text-gray-700 font-bold mb-1 px-1"
+                  htmlFor="Patent Title"
+                >
+                    Patent Title
+                </label>
+                <TextArea
+                  id="outlined-basic"
+                  name="Patent  Title"
+                  placeholder="Enter your patent title"
+                  //error={errors?.companyDescription ? true : false}
+                  value={patentname}
+                  onChange={(e) => setPatentname(e.target.value)}
+                  // size={"medium" as Responsive<"1" | "2" | "3">}
+                  // className="appearance-none rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+                
               </div>
 
               <div className="mb-4 col-span-2">

@@ -88,3 +88,29 @@ app.use("/details", Details);
 app.use("/chat", Chat);
 app.use("/patent",Patent);
 app.use("/search",Search);
+
+
+const API_KEY = "057370ebbddbf798e96051f0552c4d7aee61f04005e002aa41f083a5d263a8f3"; // Store API key securely
+
+// app.get("/validate-patent", async (req, res) => {
+//   const { patent_id } = req.query;
+
+//   if (!patent_id) {
+//     return res.status(400).json({ error: "Patent ID is required" });
+//   }
+
+//   const apiUrl = `https://serpapi.com/search.json?engine=google_patents_details&patent_id=${patent_id}&api_key=${API_KEY}`;
+
+//   try {
+//     const response = await fetch(apiUrl);
+//     if (!response.ok) {
+//       throw new Error(`API Error (Status: ${response.status})`);
+//     }
+
+//     const data = await response.json();
+//     res.json(data);
+//   } catch (error) {
+//     console.error("Error fetching patent data:", error.message);
+//     res.status(500).json({ error: "Failed to fetch patent data" });
+//   }
+// });
