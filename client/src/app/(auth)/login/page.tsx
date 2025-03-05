@@ -71,8 +71,10 @@ export default function Login() {
             userType: userType,
           })
         );
+        console.log("Error in iiiiii");
         if(userType==='Investor'){  router.push("/dashboardInvestor"); }
         else{
+          console.log("Errrorrrrrrr");
           router.push("/dashboardStartup");
         }// Redirect after successful login
       } catch (error) {
@@ -90,15 +92,20 @@ export default function Login() {
   const authState = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
-    console.log("Auth state changed:", authState);
+    console.log("Auth state changed:", authState); // Check what the state contains
+    console.log("UserType:", authState.userType);
+  
     if (authState.authState) {
-      if (authState.userType === 'Startup') {
+      if (authState.userType === "Startup") {
+        console.log("Redirecting to Startup Dashboard");
         router.push("/dashboardStartup");
-      } else if (authState.userType === 'Investor') {
+      } else if (authState.userType === "Investor") {
+        console.log("Redirecting to Investor Dashboard");
         router.push("/dashboardInvestor");
       }
     }
   }, [authState, router]);
+  
   return (
     <div className="overflow-hidden">
       {!showForm ? (
